@@ -17,5 +17,5 @@
   <h5>{{campaign.title}}</h5>
   <p>{{campaign.message}}</p>
   <button data-open="exampleModal1" (click)="setCampaign(campaign)" class="tiny button">Edit</button>
-  <button class="tiny button">Delete</button>
+  <button class="tiny button" (click)="deleteCampaign(campaign.id)">Delete</button>
 </div>

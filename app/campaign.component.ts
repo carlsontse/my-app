@@ -1,3 +1,4 @@
+/// <reference path="jquery.d.ts" />
 import { Component } from '@angular/core';
 import { Campaign } from './campaign';
 import { CampaignService } from './campaign.service';
@@ -15,6 +16,7 @@ export class CampaignComponent implements OnInit {
   campaigns = [];
   error: any;
   editCampaign: Campaign;
+  savedCampaign: Campaign;
 
   constructor(
     private router: Router,
@@ -53,8 +55,17 @@ export class CampaignComponent implements OnInit {
     if (savedCampaign) { this.getCampaigns(); }
   }
 
-  deletecampaign(campaign: Campaign, event: any) {
+  deleteCampaign(campaignId) {
     event.stopPropagation();
+    var that=this;
+    $.each(this.campaigns, function(i, campaign) {
+        if (campaign.id == campaignId) {
+          that.campaigns.splice(i, 1);
+          //TODO: call delete on campaigns endpoint!
+          return false;
+        }
+    });
+
   /*  this.campaignService
         .delete(campaign)
         .then(res => {

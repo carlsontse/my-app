@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+/// <reference path="jquery.d.ts" />
 var core_1 = require('@angular/core');
 var subscription_service_1 = require('./subscription.service');
 var campaign_service_1 = require('./campaign.service');
@@ -35,6 +36,16 @@ var SubscriptionComponent = (function () {
                     subscription.campaign = campaign;
                 });
             });
+        });
+    };
+    SubscriptionComponent.prototype.unsubscribe = function (subscriptionId) {
+        var that = this;
+        $.each(this.subscriptions, function (i, subscription) {
+            if (subscription.id == subscriptionId) {
+                that.subscriptions.splice(i, 1);
+                //TODO: call DELETE on subscription
+                return false;
+            }
         });
     };
     SubscriptionComponent = __decorate([

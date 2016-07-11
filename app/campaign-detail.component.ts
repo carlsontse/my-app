@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import {Campaign} from './campaign';
 import {CampaignService} from './campaign.service';
 import { ActivatedRoute } from '@angular/router';
+import { OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'campaign-detail',
@@ -12,6 +14,7 @@ import { ActivatedRoute } from '@angular/router';
 export class CampaignDetailComponent implements OnInit,OnDestroy {
 
   campaign: Campaign;
+  sub: any;
 
   constructor(
     private route: ActivatedRoute,

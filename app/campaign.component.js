@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+/// <reference path="jquery.d.ts" />
 var core_1 = require('@angular/core');
 var campaign_1 = require('./campaign');
 var campaign_service_1 = require('./campaign.service');
@@ -47,8 +48,16 @@ var CampaignComponent = (function () {
             this.getCampaigns();
         }
     };
-    CampaignComponent.prototype.deletecampaign = function (campaign, event) {
+    CampaignComponent.prototype.deleteCampaign = function (campaignId) {
         event.stopPropagation();
+        var that = this;
+        $.each(this.campaigns, function (i, campaign) {
+            if (campaign.id == campaignId) {
+                that.campaigns.splice(i, 1);
+                //TODO: call delete on campaigns endpoint!
+                return false;
+            }
+        });
         /*  this.campaignService
               .delete(campaign)
               .then(res => {

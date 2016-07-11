@@ -1,3 +1,4 @@
+/// <reference path="jquery.d.ts" />
 import { Component } from '@angular/core';
 import { Subscription } from './subscription';
 import { SubscriptionService } from './subscription.service';
@@ -45,6 +46,17 @@ export class SubscriptionComponent implements OnInit {
 
       }
     );
+  }
+
+  unsubscribe(subscriptionId) {
+    var that=this;
+    $.each(this.subscriptions, function(i, subscription) {
+        if (subscription.id == subscriptionId) {
+          that.subscriptions.splice(i, 1);
+          //TODO: call DELETE on subscription
+          return false;
+        }
+    });
   }
 
 }
