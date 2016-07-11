@@ -1,0 +1,21 @@
+<div class="reveal" id="exampleModal1" data-reveal>
+  <div *ngIf="editCampaign" class="form-group">
+      <label for="title">Title</label>
+      <input type="text" class="form-control" required
+        [(ngModel)]="editCampaign.title" name="title">
+      <label for="message">Message</label>
+      <textarea rows="4" class="form-control" required
+          [(ngModel)]="editCampaign.message" name="message"></textarea>
+  </div>
+  <button class="button" (click)="saveNewCampaign()" data-close type="button">Save</button>
+  <button class="button" data-close type="button">Cancel</button>
+</div>
+
+<button data-open="exampleModal1" (click)="initNewCampaign()" type="button" class="button">New</button>
+
+<div *ngFor="let campaign of campaigns">
+  <h5>{{campaign.title}}</h5>
+  <p>{{campaign.message}}</p>
+  <button data-open="exampleModal1" (click)="setCampaign(campaign)" class="tiny button">Edit</button>
+  <button class="tiny button">Delete</button>
+</div>

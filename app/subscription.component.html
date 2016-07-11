@@ -1,0 +1,8 @@
+<div *ngFor="let subscription of subscriptions">
+  <div *ngIf="subscription.campaign">
+    <h6>{{subscription.campaign.userId}}</h6>
+    <h5>{{subscription.campaign.title}}</h5>
+    <p>{{subscription.campaign.message}}</p>
+    <button class="tiny button">Unsubscribe</button>
+  </div>
+</div>
